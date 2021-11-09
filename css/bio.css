@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
 h2, h5 {
 	color: purple;
 	font-family: 'Mochiy Pop One', sans-serif;
@@ -19,4 +20,8 @@ h3 {
 #sticky-footer {
 	bottom: 0;
 	top: 0;
+}
+
+.kelas {
+	color: wheat;
 }
