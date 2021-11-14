@@ -1,3 +1,5 @@
+ <?php include './koneksi.php'; ?>
+
  <!-- Tabel Mahasiswa -->
  <table class="table table-striped table-hover ">
         <thead>
@@ -12,35 +14,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Rosiani</td>
-            <td>C1855201073</td>
-            <td>Teknik Informatika</td>
-            <td>
-              <a class="fa fa-pencil btn btn-warning mx-1" href=""></a>
-              <a class="fa fa-trash btn btn-danger" href=""></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Ananda</td>
-            <td>C1855201074</td>
-            <td>Sistem Informasi</td>
-            <td>
-              <a class="fa fa-pencil btn btn-warning mx-1" href=""></a>
-              <a class="fa fa-trash btn btn-danger" href=""></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Damaputra</td>
-            <td>C1855201075</td>
-            <td>Manajemen Informasi</td>
-            <td>
-              <a class="fa fa-pencil btn btn-warning mx-1" href=""></a>
-              <a class="fa fa-trash btn btn-danger" href=""></a>
-            </td>
-          </tr>
+					<!-- Menampilkan Data dari Database -->
+					<?php
+						$no = 1;
+						$ambilQuery = mysqli_query($koneksi, "SELECT * FROM mahasiswa");
+						while ($row = mysqli_fetch_assoc($ambilQuery)) {
+					?>
+
+							<tr>
+								<th scope="row"><?= $no++; ?></th>
+								<td><?= $row ['nama'];?></td>
+								<td><?= $row ['nim'];?></td>
+								<td><?= $row ['prodi'];?></td>
+								<td>
+									<a class="fa fa-pencil btn btn-warning mx-1" href="" ></a>
+									<a class="fa fa-trash btn btn-danger" href=""></a>
+								</td>
+							</tr>
+					<?php	} ?>
         </tbody>
       </table>
