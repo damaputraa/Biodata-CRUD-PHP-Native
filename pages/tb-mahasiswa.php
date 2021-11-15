@@ -29,8 +29,9 @@
 								<td><?= $row ['nim'];?></td>
 								<td><?= $row ['prodi'];?></td>
 								<td>
-									<a class="fa fa-pencil btn btn-warning mx-1" href="index.php?p=edit-mahasiswa" ></a>
-									<a class="fa fa-trash btn btn-danger"  name="hapus-mahasiswa" href="index.php?p=fungsi&id=<?php echo $row['id_mahasiswa']; ?>"></a>
+									<a class="fa fa-pencil btn btn-warning mx-1" href="index.php?p=edit-mahasiswa&id=<?php echo $row['id_mahasiswa']; ?>" ></a>
+									
+									<a class="fa fa-trash btn btn-danger"  name="hapus-mahasiswa" href="index.php?p=fungsi&id=<?php echo $row['id_mahasiswa']; ?>" onclick="return confirm('Apakah Yakin Ingin Menghapus Data Ini ?');"></a>
 								</td>
 							</tr>
 					<?php	} ?>

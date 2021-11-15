@@ -21,7 +21,11 @@ if($_POST['tambah-mahasiswa']) {
 }
 
 // --------------------------- Update Mahasiswa --------------------------------
-if($_POST['edit-mahasiswa']) {
+if(isset($_POST['edit-mahasiswa'])) {
+	$id_mahasiswa = $_POST['id_mahasiswa'];
+	$nama					= $_POST['nama'];
+	$nim					= $_POST['nim'];
+	$prodi				= $_POST['prodi'];
 	$queryEdit = mysqli_query($koneksi, "UPDATE mahasiswa SET nama='$nama', nim='$nim', prodi='$prodi' WHERE id_mahasiswa = '$id_mahasiswa' ");
 	
 	if($queryEdit) {
@@ -46,3 +50,4 @@ if(isset($_GET['id'])) {
 }
 
 ?>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

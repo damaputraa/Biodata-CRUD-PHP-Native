@@ -1,20 +1,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <?php
 include './koneksi.php';
-  
-$query = "SELECT * FROM mahasiswa";
-$result = mysqli_query($koneksi, $query); 
 
-while($row = mysqli_fetch_assoc($result))
-{
-	$id_mahasiswa = $row['id_mahasiswa'];
-	$nama = $row['nama'];
-	$nim = $row['nim'];
-	$prodi = $row['prodi'];
-	?>
-
-<?php 
-$id_mahasiswa = $row['id_mahasiswa'];
+$id_mahasiswa = $_GET['id'];
 $query = "SELECT * FROM mahasiswa WHERE id_mahasiswa='$id_mahasiswa'";
 $result = mysqli_query($koneksi, $query);
 while ($row = mysqli_fetch_assoc($result)) {
@@ -33,13 +22,14 @@ while ($row = mysqli_fetch_assoc($result)) {
   <div class="form-group">
 		<label for="exampleInputEmail1">Program Studi</label>
     <select name="prodi" class="form-control w-50" value=""  required>
-			<option value="-" selected="selected">-- Pilih Prodi --</option>
+			<option value="<?= $row['prodi']; ?>" selected="selected">-- Pilih Prodi --</option>
       <option value="Teknik Informatika">Teknik Informatika</option>
       <option value="Sistem Informasi">Sistem Informasi</option>
       <option value="Manajemen Informatika">Manajemen Informatika</option>
     </select>
   </div>
-	<button type="submit" name="edit-mahasiswa" value="Submit" class="btn btn-warning">Edit</button>
+	<input type="submit" name="edit-mahasiswa" value="Update" class="btn btn-warning ">
+	<!-- <input id="reset" type="reset" name="" value="reset" class="btn btn-success"> -->
 </form>
-<?php } ?>
+
 <?php } ?>
