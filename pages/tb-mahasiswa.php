@@ -66,7 +66,7 @@
 
 <?php if (@$_SESSION['sukses-hapus']) { ?>
 	<script>
-		swal("Tambah Data Berhasil", "<?php echo $_SESSION['sukses-hapus']; ?>", "error");
+		swal("Hapus Data Berhasil", "<?php echo $_SESSION['sukses-hapus']; ?>", "error");
 	</script>
 
 <?php unset($_SESSION['sukses-hapus']);
