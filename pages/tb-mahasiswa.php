@@ -1,6 +1,8 @@
 <!-- ANimasi Sweet Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<?php session_start(); ?>
 
 <?php include './koneksi.php'; ?>
 
@@ -18,6 +20,8 @@
 			<th scope="col">Aksi</th>
 		</tr>
 	</thead>
+
+
 	<tbody>
 		<!-- Menampilkan Data dari Database -->
 		<?php
@@ -35,26 +39,35 @@
 				<td>
 					<a class="fa fa-pencil btn btn-warning mx-1" href="index.php?p=edit-mahasiswa&id=<?php echo $row['id_mahasiswa']; ?>"></a>
 
-					<a class="hapus fa fa-trash btn btn-danger" name="hapus-mahasiswa" href="index.php?p=fungsi&id=<?php echo $row['id_mahasiswa']; ?>" id="hapus2" ></a>
+					<a class="hapus fa fa-trash btn btn-danger" name="hapus-mahasiswa" href="index.php?p=fungsi&id=<?php echo $row['id_mahasiswa']; ?>" onclick="return confirm('Apakah ingin di hapus ?');" ></a>
 				</td>
 			</tr>
-			<?php	} ?>
-		</tbody>
-	</table>
-	<button id="h2">Hapus</button>
-	<!-- onclick="return confirm('Apakah ingin di hapus ?');" -->
-<script>
-	document.querySelector("#hapus2").addEventListener('click', function() {
-		swal.fire({
-    title: "Apakah Anda Yakin Hapus Data Ini ?",
-    type: "info",
-    showCancelButton: true,
-    confirmButtonText: "Delete It",
-    confirmButtonColor: "#ff0055",
-    cancelButtonColor: "#999999",
-    reverseButtons: true,
-    focusConfirm: false,
-    focusCancel: true
-  });
-	});
-</script>
+		<?php	} ?>
+	</tbody>
+</table>
+
+<!-- jika ada session sukses maka tampilkan sweet alert dengan pesan yang telah di set
+    di dalam session sukses  -->
+<?php if (@$_SESSION['sukses-tambah']) { ?>
+	<script>
+		swal("Tambah Data Berhasil", "<?php echo $_SESSION['sukses-tambah']; ?>", "success");
+	</script>
+	<!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['sukses-tambah']);
+} ?>
+
+<?php if (@$_SESSION['sukses-edit']) { ?>
+	<script>
+		swal("Edit Data Berhasil", "<?php echo $_SESSION['sukses-edit']; ?>", "info");
+	</script>
+
+<?php unset($_SESSION['sukses-edit']);
+} ?>
+
+<?php if (@$_SESSION['sukses-hapus']) { ?>
+	<script>
+		swal("Tambah Data Berhasil", "<?php echo $_SESSION['sukses-hapus']; ?>", "error");
+	</script>
+
+<?php unset($_SESSION['sukses-hapus']);
+} ?>
