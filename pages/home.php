@@ -23,11 +23,11 @@
 
     </div>
   </div>
-  <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+  <!-- <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
     <div class="container text-center">
       <p>Copyright Template Source Code By &copy; <a href="https://colorlib.com/wp/bootstrap-sidebar/" target="_blank">Colorlib</a></p>
     </div>
-  </footer>
+  </footer> -->
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.js"></script>
   <script src="js/bootstrap.min.js"></script>
